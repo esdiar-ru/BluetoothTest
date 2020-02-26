@@ -88,6 +88,7 @@ public class MainPresenter extends BasePresenter<MainViewMVP> implements MainPre
     public void isStop() {//TODO
         if (view != null && bound) {
             //service.close();
+            bound = false;
             Log.d("Main", "Unbind");
             view.unBindService(connection);
         }

@@ -68,6 +68,7 @@ public class SearchPresenter extends BasePresenter<SearchViewMvp> implements Sea
     public void isStop() {
         if (view != null && bound) {
             //service.close();
+            bound = false;
             Log.d("Search","Unbind");
             view.unBindService(connection);
         }
