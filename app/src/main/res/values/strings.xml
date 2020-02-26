@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BluetoothTest</string>
+    <string name="command1">Command1</string>
+    <string name="command2">Command2</string>
+    <string name="command3">Command3</string>
+    <string name="connect">Connect</string>
+</resources>
