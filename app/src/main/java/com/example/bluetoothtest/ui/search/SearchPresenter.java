@@ -76,6 +76,7 @@ public class SearchPresenter extends BasePresenter<SearchViewMvp> implements Sea
     @Override
     public void isStart() {
         if (!bound) {
+            Log.d("Search","bind");
             view.bindService(BluetoothService.class, connection, BIND_AUTO_CREATE);
         }
     }

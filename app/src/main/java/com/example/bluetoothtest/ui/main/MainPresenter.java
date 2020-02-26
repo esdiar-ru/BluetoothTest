@@ -22,7 +22,6 @@ public class MainPresenter extends BasePresenter<MainViewMVP> implements MainPre
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             bound = true;
-            Log.d("Test", "TRUE");
             MainPresenter.this.service = ((BluetoothService.BluetoothBinder) service).getService();
             mDisposable.add(MainPresenter.this.service.getResponseCommandFlowable()
                     .subscribeOn(Schedulers.io())
@@ -30,10 +29,12 @@ public class MainPresenter extends BasePresenter<MainViewMVP> implements MainPre
                     .subscribe(t -> view.showCommand(t)));
             mDisposable.add(MainPresenter.this.service.getSubjectSendByte()
                     .subscribe());
+            Log.d("Main", "ServiceConnected");
         }
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
+            Log.d("Main", "ServiceDisconnected");
             bound = false;
         }
     };
@@ -43,7 +44,7 @@ public class MainPresenter extends BasePresenter<MainViewMVP> implements MainPre
 
     @Override
     public void isAttach() {
-        if (service == null) {
+        if (service == null && !bound) {
             view.bindService(BluetoothService.class, connection, BIND_AUTO_CREATE);
         }
     }
@@ -84,17 +85,19 @@ public class MainPresenter extends BasePresenter<MainViewMVP> implements MainPre
     }
 
     @Override
-    public void isStop() {
+    public void isStop() {//TODO
         if (view != null && bound) {
             //service.close();
-            Log.d("Main","Unbind");
+            Log.d("Main", "Unbind");
             view.unBindService(connection);
         }
     }
 
     @Override
-    public void isStart() {
+    public void isStart() {//TODO
+        Log.d("Main", "isStart");
         if (!bound) {
+            Log.d("Main", "bind");
             view.bindService(BluetoothService.class, connection, BIND_AUTO_CREATE);
         }
     }

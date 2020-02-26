@@ -98,7 +98,10 @@ public class BluetoothService extends Service {
 
     @Override public int onStartCommand(Intent intent, int flags, int startId) {
         bluetoothService = this;
-        //startForeground(1,new );
+        startForeground(1,new Notification.Builder(this)
+                .setContentText("Hello1")
+                .setContentTitle("Title1")
+                .build());
         return super.onStartCommand(intent, flags, startId);
     }
 
