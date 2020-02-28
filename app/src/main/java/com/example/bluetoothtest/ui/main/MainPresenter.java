@@ -85,7 +85,7 @@ public class MainPresenter extends BasePresenter<MainViewMVP> implements MainPre
     }
 
     @Override
-    public void isStop() {//TODO
+    public void isStop() {
         if (view != null && bound) {
             //service.close();
             bound = false;
@@ -95,7 +95,7 @@ public class MainPresenter extends BasePresenter<MainViewMVP> implements MainPre
     }
 
     @Override
-    public void isStart() {//TODO
+    public void isStart() {
         Log.d("Main", "isStart");
         if (!bound) {
             Log.d("Main", "bind");
